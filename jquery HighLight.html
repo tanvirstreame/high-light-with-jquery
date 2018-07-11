@@ -1,0 +1,26 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="blah">
+
+<p>Text ab and la</p>
+</div>
+<script>
+function preg_quote( str ) {
+   return (str+'').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
+}
+
+
+$('.blah').each(function(){
+    var text = $(this).text();
+    var searched_text = 'ab';
+    var keywords = searched_text.split(' ');
+    keywords = $.map(keywords, function(str) {
+       return preg_quote(str);
+    });
+    $(this).html(text.replace(new RegExp("(" + keywords.join('|') + ")" , 'gi'), "<span style=color:yellow>$1</span>"));
+});
+
+
+
+
+</script>
