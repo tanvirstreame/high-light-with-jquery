@@ -37,7 +37,9 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 $(document).ready(function() {
 
 var src_str = $("#contain").html();
-var term = "popular";
+var res = "popular,Lorem,no";
+var term = res.replace(/,/g, "|");
+console.log(term)
 term = term.replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
 var pattern = new RegExp("("+term+")", "gi");
 
